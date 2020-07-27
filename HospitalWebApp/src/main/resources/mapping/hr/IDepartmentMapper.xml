@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.oa.hr.mapper.IDepartmentMapper">
+
+  <resultMap id="DepartmentResultMap" type="Department">
+  	<id property="num" column="deptnum"/>
+  	<result property="code" column="deptcode"/>
+  	<result property="name" column="deptname"/>
+  
+  </resultMap>
+  
+  <insert id="insert" keyProperty="num" keyColumn="deptnum" useGeneratedKeys="true">
+  insert into oa_department (deptcode, deptname) values (#{code}, #{name})
+  </insert>
+
+  <update id="update">
+  update oa_department set deptcode = #{ code}, deptname = #{name} where deptnum = #{num}
+  </update>
+
+  <delete id="delete">
+  delete from oa_department where deptnum = #{num}
+  </delete>
+  
+  <select id="selectByNum"  resultMap="DepartmentResultMap">
+  select * from oa_department where deptnum = #{num}
+  </select>
+
+  <select id="selectByAll" resultMap="DepartmentResultMap">
+  select * from oa_department
+  </select>
+  
+  <select id="selectByAllWithPage" resultMap="DepartmentResultMap">
+  select * from oa_department limit #{start}, #{rows}
+  </select>
+  
+  <select id="selectCountByAll" resultType="_int">
+  select count(*) from oa_department
+  </select>
+  
+  
+  
+</mapper>

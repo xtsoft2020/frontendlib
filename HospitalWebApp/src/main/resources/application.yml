@@ -1,0 +1,19 @@
+
+server:
+  port: 8780
+ 
+spring:
+  datasource:
+    username: root
+    password: 123zxcvb
+    url: jdbc:mysql://localhost:3316/soft2020?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+ 
+mybatis:
+  mapper-locations: classpath:mapping/**/*.xml
+  type-aliases-package: com.neusoft.oa.hr.model, com.neusoft.oa.admin.model
+ 
+#showSql
+logging:
+  level:
+    com.neusoft.oa: debug
